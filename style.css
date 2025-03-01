@@ -166,9 +166,9 @@ body {
 }
 
 .watermark {
-  position: absolute;
+  position: fixed;
   bottom: 50px;
-  right: 100px;
+  right: 50px;
   font-size: 16px;
   color: rgb(120, 118, 118);
   font-weight: bold;
