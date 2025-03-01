@@ -35,7 +35,7 @@
 
 <div id="about-section" class="aboutme">
     <h3>About Me</h3>
-    <p>Saya adalah seorang mahasiswa jurusan Sistem Informasi dengan passion di dunia editing dan motion graphics. Hobi saya meliputi olahraga serta mengedit foto dan video, terutama dalam gaya cinematic dan animasi. Saya sering membuat motion graphics untuk video pendek, menggunakan Alight Motion untuk menciptakan efek transisi yang halus dan visual yang menarik. Dan saya juga suka mengedit photo seperti poster film, yang karakternya diri saya sendiri.
+    <p>Saya adalah seorang mahasiswa jurusan Sistem Informasi dengan passion di dunia editing. Hobi saya meliputi olahraga serta mengedit foto dan video, terutama dalam gaya cinematic dan animasi. Saya sering membuat motion graphics untuk video pendek, menggunakan Alight Motion untuk menciptakan efek transisi yang halus dan visual yang menarik. Dan saya juga suka mengedit photo seperti poster film, yang karakternya diri saya sendiri.
     </p>
 </div>
 
@@ -77,176 +77,185 @@
   </div>
 </div>
 
+<!-- Watermark -->
+<div class="watermark">Adhmrn >> HAR</div>
+
 <!-- GAME SECTION -->
 <div id="game-section">
-    <h3>Snake Game</h3>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
+  <h3>Snake Game</h3>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      document.body.classList.add("animate__animated", "animate__fadeIn");
-  });
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("animate__animated", "animate__fadeIn");
+});
 </script>
 <style>
-  .game-container {
-      text-align: center;
-      margin-top: 20px;
-  }
-  canvas {
-      background: rgb(0, 0, 0);
-      border: 2px solid rgb(119, 0, 0);
-      display: block;
-      margin: auto;
-  }
-  .controls, .username-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 10px;
-  }
-  .controls button, #startButton {
-      padding: 10px;
-      font-size: 16px;
-      margin: 5px;
-      cursor: pointer;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-  }
-  .game-over {
-      font-size: 24px;
-      color: red;
-      font-weight: bold;
-      display: none;
-      margin-top: 10px;
-      animation: shake 0.5s ease-in-out;
-  }
-  #usernameInput {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-  }
-  @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      50% { transform: translateX(10px); }
-      75% { transform: translateX(-10px); }
-  }
+.game-container {
+    text-align: center;
+    margin-top: 20px;
+}
+canvas {
+    background: rgb(0, 0, 0);
+    border: 2px solid rgb(119, 0, 0);
+    display: block;
+    margin: auto;
+}
+.controls, .username-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.controls button, #startButton {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.game-over {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+    display: none;
+    margin-top: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+#usernameInput {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
 </style>
-</head>
-<body>
+
 <div class="username-container">
-  <input type="text" id="usernameInput" placeholder="Masukkan nama Anda">
-  <button id="startButton" onclick="startGame()">Mulai Game</button>
+<input type="text" id="usernameInput" placeholder="Masukkan nama Anda">
+<button id="startButton" onclick="startGame()">Mulai Game</button>
 </div>
 
 <div class="game-container">
-  <h3 id="playerName">Snake Game</h3>
-  <p id="score">Score: 0</p>
+<h3 id="playerName">Snake Game</h3>
+<p id="score">Score: 0</p>
 </div>
 <p id="gameOverText" class="game-over animate__animated animate__bounce">Yahaha Mati!</p>
 
 <div class="controls">
-  <div>
-      <button onclick="changeDirection('UP')">⬆️</button>
-  </div>
-  <div>
-      <button onclick="changeDirection('LEFT')">⬅️</button>
-      <button onclick="changeDirection('RIGHT')">➡️</button>
-  </div>
-  <div>
-      <button onclick="changeDirection('DOWN')">⬇️</button>
-  </div>
+<div>
+    <button onclick="changeDirection('UP')">⬆️</button>
+</div>
+<div>
+    <button onclick="changeDirection('LEFT')">⬅️</button>
+    <button onclick="changeDirection('RIGHT')">➡️</button>
+</div>
+<div>
+    <button onclick="changeDirection('DOWN')">⬇️</button>
+</div>
 </div>
 
 <script>
-  let canvas = document.getElementById("gameCanvas");
-  let ctx = canvas.getContext("2d");
-  let box = 20;
-  let snake = [{ x: 10 * box, y: 10 * box }];
-  let direction = "RIGHT";
-  let food;
-  let score = 0;
-  let game;
-  let playerName = "";
-  
-  function startGame() {
-      playerName = document.getElementById("usernameInput").value || "Player";
-      document.getElementById("playerName").innerText = playerName + "'s Snake Game";
-      snake = [{ x: 10 * box, y: 10 * box }];
-      direction = "RIGHT";
-      score = 0;
-      document.getElementById("score").innerText = "Score: " + score;
-      document.getElementById("gameOverText").style.display = "none";
-      placeFood();
-      clearInterval(game);
-      game = setInterval(drawGame, 100);
-  }
+let canvas = document.getElementById("gameCanvas");
+let ctx = canvas.getContext("2d");
+let box = 20;
+let snake = [{ x: 10 * box, y: 10 * box }];
+let direction = "RIGHT";
+let food;
+let score = 0;
+let game;
+let playerName = "";
 
-  function placeFood() {
-      food = {
-          x: Math.floor(Math.random() * 25) * box,
-          y: Math.floor(Math.random() * 25) * box,
-      };
-  }
+function startGame() {
+    playerName = document.getElementById("usernameInput").value || "Player";
+    document.getElementById("playerName").innerText = playerName + "'s Snake Game";
+    snake = [{ x: 10 * box, y: 10 * box }];
+    direction = "RIGHT";
+    score = 0;
+    document.getElementById("score").innerText = "Score: " + score;
+    document.getElementById("gameOverText").style.display = "none";
+    placeFood();
+    clearInterval(game);
+    game = setInterval(drawGame, 100);
+}
 
-  function changeDirection(newDirection) {
-      if (newDirection === "LEFT" && direction !== "RIGHT") direction = "LEFT";
-      else if (newDirection === "UP" && direction !== "DOWN") direction = "UP";
-      else if (newDirection === "RIGHT" && direction !== "LEFT") direction = "RIGHT";
-      else if (newDirection === "DOWN" && direction !== "UP") direction = "DOWN";
-  }
+function placeFood() {
+    food = {
+        x: Math.floor(Math.random() * (canvas.width / box)) * box,
+        y: Math.floor(Math.random() * (canvas.height / box)) * box,
+    };
+}
 
-  function drawGame() {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+function changeDirection(newDirection) {
+    if (newDirection === "LEFT" && direction !== "RIGHT") direction = "LEFT";
+    else if (newDirection === "UP" && direction !== "DOWN") direction = "UP";
+    else if (newDirection === "RIGHT" && direction !== "LEFT") direction = "RIGHT";
+    else if (newDirection === "DOWN" && direction !== "UP") direction = "DOWN";
+}
 
-      ctx.fillStyle = "red";
-      ctx.fillRect(food.x, food.y, box, box);
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowLeft" || event.key === "a") changeDirection("LEFT");
+    if (event.key === "ArrowUp" || event.key === "w") changeDirection("UP");
+    if (event.key === "ArrowRight" || event.key === "d") changeDirection("RIGHT");
+    if (event.key === "ArrowDown" || event.key === "s") changeDirection("DOWN");
+});
 
-      for (let i = 0; i < snake.length; i++) {
-          ctx.fillStyle = i === 0 ? "green" : "lime";
-          ctx.fillRect(snake[i].x, snake[i].y, box, box);
-      }
+function drawGame() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      let snakeX = snake[0].x;
-      let snakeY = snake[0].y;
+    ctx.fillStyle = "red";
+    ctx.fillRect(food.x, food.y, box, box);
 
-      if (direction === "LEFT") snakeX -= box;
-      if (direction === "UP") snakeY -= box;
-      if (direction === "RIGHT") snakeX += box;
-      if (direction === "DOWN") snakeY += box;
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = i === 0 ? "green" : "lime";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    }
 
-      if (snakeX === food.x && snakeY === food.y) {
-          score += 10;
-          document.getElementById("score").innerText = "Score: " + score;
-          placeFood();
-      } else {
-          snake.pop();
-      }
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
 
-      let newHead = { x: snakeX, y: snakeY };
-      if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || checkCollision(newHead, snake)) {
-          clearInterval(game);
-          document.getElementById("gameOverText").style.display = "block";
-          return;
-      }
-      snake.unshift(newHead);
-  }
+    if (direction === "LEFT") snakeX -= box;
+    if (direction === "UP") snakeY -= box;
+    if (direction === "RIGHT") snakeX += box;
+    if (direction === "DOWN") snakeY += box;
 
-  function checkCollision(head, body) {
-      for (let i = 1; i < body.length; i++) {
-          if (head.x === body[i].x && head.y === body[i].y) {
-              return true;
-          }
-      }
-      return false;
-  }
+    if (snakeX === food.x && snakeY === food.y) {
+        score += 10;
+        document.getElementById("score").innerText = "Score: " + score;
+        placeFood();
+    } else {
+        snake.pop();
+    }
+
+    let newHead = { x: snakeX, y: snakeY };
+    if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || checkCollision(newHead, snake)) {
+        clearInterval(game);
+        document.getElementById("gameOverText").style.display = "block";
+        return;
+    }
+    snake.unshift(newHead);
+}
+
+function checkCollision(head, body) {
+    for (let i = 1; i < body.length; i++) {
+        if (head.x === body[i].x && head.y === body[i].y) {
+            return true;
+        }
+    }
+    return false;
+}
 </script>
 </div>
 </body>
