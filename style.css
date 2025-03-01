@@ -115,6 +115,7 @@ body {
 
 .contactme a:hover {
   background: #000000;
+  box-shadow: 0 0 50px rgb(96, 78, 255);
 }
 
 /* Gallery */
