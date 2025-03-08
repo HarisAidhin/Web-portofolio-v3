@@ -35,15 +35,14 @@
 
 <div id="about-section" class="aboutme">
     <h3>About Me</h3>
-    <p>Saya adalah seorang mahasiswa jurusan Sistem Informasi dengan passion di dunia editing. Hobi saya yaitu olahraga serta mengedit foto dan video. Saya suka membuat motion graphics dengan durasi singkat, menggunakan aplikasi Alight Motion untuk menciptakan efek transisi yang halus dan visual yang menarik. Dan saya juga suka mengedit photo seperti poster film, yang karakternya diri saya sendiri.
+    <p>Saya adalah seorang mahasiswa jurusan Sistem Informasi dengan passion di dunia editing. Hobi saya meliputi olahraga serta mengedit foto dan video, terutama dalam gaya cinematic dan animasi. Saya sering membuat motion graphics untuk video pendek, menggunakan Alight Motion untuk menciptakan efek transisi yang halus dan visual yang menarik. Dan saya juga suka mengedit photo seperti poster film, yang karakternya diri saya sendiri.
     </p>
 </div>
 
 <div class="skills">
-          <h3>Creating Intuitive & Responsive UI</h3>
+          <h3>My Passion: Coding & Visual Editing</h3>
           <p>
-              I develop simple, intuitive and responsive user interface that helps users get things done with less
-              effort and time with those technologies.
+            I enjoy editing photos and videos in a cinematic style and creating motion graphics. I also develop simple, responsive, and user-friendly interfaces.
           </p>
 </div>
 
@@ -81,7 +80,7 @@
 <div class="watermark">Adhmrn >> HAR</div>
 
 <!-- GAME SECTION -->
-<div id="game-section">
+<div id="game-section" class="Game">
   <h3>Snake Game</h3>
   <canvas id="gameCanvas" width="400" height="400"></canvas>
 </div>
@@ -139,6 +138,7 @@ canvas {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
@@ -160,21 +160,21 @@ canvas {
 
 <div class="controls">
 <div>
-    <button onclick="changeDirection('UP')">⬆️</button>
+    <button onclick="changeDirection('UP')">🔼</button>
 </div>
 <div>
-    <button onclick="changeDirection('LEFT')">⬅️</button>
-    <button onclick="changeDirection('RIGHT')">➡️</button>
+    <button onclick="changeDirection('LEFT')">◀️</button>
+    <button onclick="changeDirection('RIGHT')">▶️</button>
 </div>
 <div>
-    <button onclick="changeDirection('DOWN')">⬇️</button>
+    <button onclick="changeDirection('DOWN')">🔽</button>
 </div>
 </div>
-                
+
 <footer>
     <p>&copy; Haris Aidhin Ramadhan</p>
 </footer>
-                
+
 <script>
 let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
