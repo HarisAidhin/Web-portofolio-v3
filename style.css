@@ -7,6 +7,7 @@
 }
 
 body{
+  max-width: 100%;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -16,6 +17,7 @@ body{
   justify-content:center;
   align-items: center;
   padding: 15px;
+  width: 100vw;
   background:linear-gradient(105deg, #4911f2a2, #19cfe38f);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.968);
 }
@@ -28,7 +30,7 @@ body{
 .container-navbar ul li a {
   text-decoration: none;
   color: #000;
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 25px;
   transition: color 0.3s ease;
 }
@@ -36,7 +38,7 @@ body{
 .container-navbar ul li a:hover {
   color: #000000;
   background:  rgb(255, 255, 255);
-  padding: 10px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 0 23px#005eff;
 }
@@ -185,8 +187,7 @@ footer {
   color: white;
   padding: 10px;
   position:relative;
-  width: 100%;
-  bottom: 0;
+  width:100vw;
 }
 
 /* Biar responsive */
@@ -209,7 +210,7 @@ footer {
 
 @media (min-width: 768px) {
   .container-navbar {
-      padding: 10px;
+      padding: 5px;
       text-align: center;
       background:linear-gradient(105deg, #4911f2a2, #86d5ff, rgb(76, 97, 255));
     
